@@ -1,0 +1,9 @@
+{
+  "name": "facile-it-message-pack-benchmark",
+  "version": "0.0.1",
+  "author": "Salvatore Cordiano <github@parallel.it>",
+  "license": "MIT",
+  "dependencies": {
+    "msgpack": "^1.0.2"
+  }
+}
