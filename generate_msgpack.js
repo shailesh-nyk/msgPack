@@ -1,11 +1,21 @@
 var msgpack = require('msgpack');
 var fs = require('fs');
-//var jsonObj = require('./document.json');
-var jsonObj = require('./demo.json');
+var bigger = 'document.json'
+var smaller = 'demo.json';
 
-var documentMsgPack = msgpack.pack(jsonObj);
+function pack(filename) {
+    var file = require(`./${filename}`);
+    var documentMsgPack = msgpack.pack(file);
+    fs.writeFile('document.msgpack', documentMsgPack, () => {
+        var fileSizeInBytes = fs.statSync("document.msgpack")["size"];
+        var fileSizeInBytesOld = fs.statSync(filename)["size"]
+        console.log('Base File Size :', fileSizeInBytesOld)
+        console.log(`New File Size : ${fileSizeInBytes}`)
+        console.log(`Improvement : ${100 - (fileSizeInBytes/fileSizeInBytesOld).toFixed(2) * 100.0} %`)
+    });
+}
 
-fs.writeFile('document.msgpack', documentMsgPack, () => {
+pack(bigger)
 
-});
+
 
