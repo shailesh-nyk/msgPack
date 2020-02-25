@@ -15,7 +15,10 @@ function pack(filename) {
     });
 }
 
-pack(bigger)
+function unpack() {
+    console.log(msgpack.unpack(fs.readFileSync('document.msgpack')));
+}
 
+pack(smaller);
 
-
+//unpack();
